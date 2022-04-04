@@ -4,7 +4,7 @@ require_once('../includes/session.php');
 require_once('../includes/header.php');
 require_once('../includes/fonctions.php');
 
-if ((isset($_GET)) && ($_GET['ajout'] == 0)) {
+if ((isset($_GET) && ($_GET['ajout'] == 0))) {
   echo "<script>alert('Un probleme lors de l'ajout de l'hebergement reesayer plus tard')</script>";
 }
 ?>

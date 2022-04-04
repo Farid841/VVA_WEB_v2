@@ -40,6 +40,7 @@ function GetHebergementNoheb($NOHEB)
     $resul = mysqli_query($con, $listeNoehb);
     return $resul;
 }
+
 ///AFINIIR
 function GetHebergementNoresa($NORESA)
 {
@@ -96,6 +97,7 @@ function GETSEMAINE()
     return $resul;
 }
 
+//FONCTION QUI CREER L'HEBERGEMENT
 function Reserver($NOHEB, $DATEDEBSEM, $NBOCCUPANT, $TARIF)
 {
     $con = Connect();
@@ -109,6 +111,7 @@ function Reserver($NOHEB, $DATEDEBSEM, $NBOCCUPANT, $TARIF)
     return $res;
 }
 
+//FONCTION QUI RECUPERE TOUS LES HEBERGEMENTS
 function GetLesHebergement()
 {
     $con = Connect();

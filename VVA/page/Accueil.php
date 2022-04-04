@@ -39,7 +39,7 @@ require_once('../includes/header.php');
 	<div class="card">
 		<img class="card-img-top" src="../image/appart1.jpg" alt="Card image cap" height="342px" width="160px">
 		<div class="card-body">
-			<a href="Hebergement.php?type=AP" class="btn btn-primary">Appartement</a>
+			<a href="user_consulter.php?type=AP" class="btn btn-primary">Appartement</a>
 		</div>
 	</div>
 
@@ -48,21 +48,21 @@ require_once('../includes/header.php');
 		<img class="card-img-top" src="../image/bungalow1.jpg" alt="Card image cap" height="342px" width="160px">
 		<div class="card-body">
 
-			<a href="hebergement.php?type=BU" class="btn btn-primary">Bungalow</a>
+			<a href="user_consulter.php?type=BU" class="btn btn-primary">Bungalow</a>
 		</div>
 	</div>
 
 	<div class="card">
 		<img class="card-img-top" src="../image/home1.jpg" alt="Card image cap" height="342px" width="160px">
 		<div class="card-body">
-			<a href="hebergement.php?type=MH" class="btn btn-primary">Mobil-Home</a>
+			<a href="user_consulter.php?type=MH" class="btn btn-primary">Mobil-Home</a>
 		</div>
 	</div>
 
 	<div class="card">
 		<img class="card-img-top" src="../image/chalet1.jpg" alt="Card image cap" height="342px" width="160px">
 		<div class=" card-body">
-			<a href="hebergement.php?type=CH" class="btn btn-primary">Chalet</a>
+			<a href="user_consulter.php?type=CH" class="btn btn-primary">Chalet</a>
 		</div>
 	</div>
 </div>

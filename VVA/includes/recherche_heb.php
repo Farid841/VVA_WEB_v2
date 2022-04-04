@@ -49,11 +49,21 @@
               <font class='hebCSS'> Type d'hébergement : </font>
             </label>
             <select name="CODETYPEHEB" class="form-control">
-              <option selected value='%'>Tous</option>
-              <option value="CH">Chalet</option>
-              <option value="AP">Appartement</option>
-              <option value="BU">Bungalow</option>
-              <option value="MH">Mobil home</option>
+              <option <? if (empty($_GET['type'])) {
+                        echo "selected";
+                      }  ?> value='%'>Tous</option>
+              <option value="CH" <? if ((isset($_GET['type']) && $_GET['type'] == 'CH')) {
+                                    echo "selected";
+                                  }  ?>>Chalet</option>
+              <option value="AP" <? if ((isset($_GET['type']) && $_GET['type'] == 'AP')) {
+                                    echo "selected";
+                                  } ?>>Appartement</option>
+              <option value="BU" <? if ((isset($_GET['type']) && $_GET['type'] == 'BU')) {
+                                    echo "selected";
+                                  } ?>>Bungalow</option>
+              <option value="MH" <? if ((isset($_GET['type']) && $_GET['type'] == 'MH')) {
+                                    echo "selected";
+                                  } ?>>Mobil home</option>
             </select>
           </div>
 
