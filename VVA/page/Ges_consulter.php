@@ -65,6 +65,11 @@ include("../includes/recherche_heb.php");
 			<th style='border-right:1px solid #C0C0C0 ;'>
 				<h5 align='center' style='color:white'>Suppression</h5>
 			</th>
+			<th style='border-right:1px solid #C0C0C0 ;'>
+				<h5 align='center' style='color:white'>Details</h5>
+			</th>
+
+
 		</tr>
 
 		<?php
@@ -114,10 +119,6 @@ include("../includes/recherche_heb.php");
 
 						echo '<td><a href="trt_supprimer.php?noheb=' . $hebergements['NOHEB'] . '">';
 						echo "<input type='submit' name='Suprimer' value='Supprimer' class='btn btn-danger'>";
-						echo "</td>";
-
-						echo '<td><a href="trt_ajouter.php?noheb=' . $hebergements['NOHEB'] . '">';
-						echo "<input type='submit' name='Ajouter' value='Ajouter' class='btn btn-danger'> </a>";
 						echo "</td>";
 
 						echo '<td><a href="hebergement.php?noheb=' . $hebergements['NOHEB'] . '">';
@@ -173,12 +174,8 @@ include("../includes/recherche_heb.php");
 						echo "<input type='submit' name='Suprimer' value='Supprimer' class='btn btn-danger'>";
 						echo "</td>";
 
-						echo '<td><a href="trt_ajouter.php?noheb=' . $hebergements['NOHEB'] . '">';
-						echo "<input type='submit' name='Ajouter' value='Ajouter' class='btn btn-danger'> </a>";
-						echo "</td>";
-
 						echo '<td><a href="hebergement.php?noheb=' . $hebergements['NOHEB'] . '">';
-						echo "<input type='submit' name='Voir hebergement' value='Voir hebergement' class='btn btn-danger'> </a>";
+						echo "<input type='submit' name='Voir hebergement' value='Voir hebergement' class='btn btn-primary'> </a>";
 						echo "</td>";
 					}
 				} else
