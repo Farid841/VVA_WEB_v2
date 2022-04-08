@@ -86,7 +86,6 @@ include("../includes/recherche_heb.php");
 
 
 					while ($hebergement = mysqli_fetch_array($res)) {
-						var_dump($hebergement);
 						echo "<tr>";
 						echo "<td style='width:200px;'>";
 						echo "<img style='width:100%;'src=image/" . $hebergement['PHOTOHEB'] . ">";
@@ -128,7 +127,7 @@ include("../includes/recherche_heb.php");
 						echo "</td>";
 
 						echo '<td><a href="hebergement.php?noheb=' . $hebergement['NOHEB'] . '">';
-						echo "<input type='submit' name='Voir hebergement' value='Voir hebergement' class='btn btn-danger'> </a>";
+						echo "<input type='submit' name='Voir hebergement' value='Voir hebergement' class='btn btn-primary'> </a>";
 						echo "</td>";
 					}
 				} else
@@ -139,7 +138,7 @@ include("../includes/recherche_heb.php");
 
 					while ($hebergement = mysqli_fetch_array($getHebs, MYSQLI_ASSOC)) {
 
-						//var_dump($value);
+
 						echo "<tr>";
 						echo "<td style='width:200px;'>";
 						echo "<img style='width:100%;'src=image/" . $hebergement['PHOTOHEB'] . ">";

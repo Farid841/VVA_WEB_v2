@@ -30,11 +30,7 @@ if (!$row)
   <!--<div class='card'> -->
   <img class='card-img-top' src='image/<?php echo $row['PHOTOHEB']; ?>' alt='Card image cap' height='342px' width='160px'>
   <div class='card-body'>
-
-    <p><strong><?php
-
-                var_dump($row);
-                echo $row['NOMHEB']; ?></strong></p>
+    <p><strong><?php echo $row['NOMHEB']; ?></strong></p>
     <p>Description: <?php echo $row['DESCRIHEB']; ?></p>
     <p>Nombre de place: <?php echo $row['NBPLACEHEB']; ?></p>
     <p>Surface d'hébergement: <?php echo $row['SURFACEHEB']; ?></p>
@@ -62,14 +58,12 @@ if (!$row)
   <input id="nombrePersonne" type="number" name="nombrePersonne" step="1" min="1" max=<?php echo $row['NBPLACEHEB']; ?> required>
 
   <table class="resa">
-
-
     <?php
     echo "<tr class='tr-resa'>";
 
     $semaine = GETSEMAINE();
     $i = 0;
-    while ($row = mysqli_fetch_array($semaine)) {
+    while ($lignesemaine = mysqli_fetch_array($semaine)) {
       if ($i % 5 == 0) {
         if ($i > 0) {
           echo "</tr>";
@@ -77,11 +71,12 @@ if (!$row)
         echo "<tr class='tr-resa'>";
       }
       echo "<td class='td-resa'>";
-      $etatresa = SavoirReservation($noheb, $row['DATEDEBSEM']);
-      echo $row['DATEDEBSEM'];
-      if ($etatresa == 0) {
+      $savoirReservation = SavoirReservation($noheb, $lignesemaine['DATEDEBSEM']);
+      //var_dump($savoirReservation);
+      echo $lignesemaine['DATEDEBSEM'];
+      if ($savoirReservation == 0) {
         echo " LIBRE ";
-        echo "<input type='radio' name='date' value='" . $row['DATEDEBSEM'] . "' required ></input>";   //  A CONTUNIER
+        echo "<input type='radio' name='date' value='" . $lignesemaine['DATEDEBSEM'] . "' required ></input>";   //  A CONTUNIER
       } else {
         echo " NON LIBRE";
       }
@@ -89,25 +84,11 @@ if (!$row)
       $i++;
     }
     ?>
-
     </tr>
   </table>
 
 
   </section>
-  <br>
-
-  <label for="date">
-    <span>Validité : &nbsp </span>
-    <strong><abbr title="required">*</abbr></strong>
-    <em>format mm/aa</em>
-  </label>
-  <input type="text" id="date" name="expiration">
-  <br>
-  <label for="account">
-    <span>Montant account : &nbsp </span>
-  </label>
-  <input type="text" id="account" name="account" max="<?php echo $row['TARIFSEMHEB']; ?>" placeholder="<?php echo $row['TARIFSEMHEB']; ?>">
   <br>
   <br>
   <center>
@@ -116,14 +97,7 @@ if (!$row)
 
   </section>
 
-
-
-
-
-
-
 </form>
-
 
 <style>
   form.formulaire {
@@ -145,7 +119,5 @@ if (!$row)
     border-color: #070A13;
   }
 </style>
-
-
 
 <?php include "../includes/footer.php"; ?>

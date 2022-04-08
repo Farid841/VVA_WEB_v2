@@ -124,7 +124,7 @@ function SavoirReservation($NOHEB, $DATE)
 {
     $con = Connect();
     mysqli_set_charset($con, "utf8");
-    $req = "SELECT NORESA FROM resa WHERE NOHEB='$NOHEB' AND DATEDEBSEM='$DATE' AND CODEETATRESA='V'";
+    $req = "SELECT NORESA FROM resa WHERE NOHEB='$NOHEB' AND DATEDEBSEM='$DATE' AND CODEETATRESA='BL'";
     $resul = mysqli_query($con, $req);
     $count = mysqli_num_rows($resul);
     return $count;
@@ -151,7 +151,7 @@ function Reserver($NOHEB, $DATEDEBSEM, $NBOCCUPANT, $TARIF)
     $DATE = date('Y-m-d');
     $MONTANTARR =  $TARIF * 0.2;    //Montant verser en avance
     $req = "INSERT INTO `resa` (`NORESA`, `USER`, `DATEDEBSEM`, `NOHEB`, `CODEETATRESA`, `DATERESA`, `DATEARRHES`, `MONTANTARRHES`, `NBOCCUPANT`, `TARIFSEMRESA`)
-     VALUES (NULL, '$USER', '$DATEDEBSEM', '$NOHEB', 'V', '$DATE', '$DATE', '$MONTANTARR', '$NBOCCUPANT', '$TARIF');";
+     VALUES (NULL, '$USER', '$DATEDEBSEM', '$NOHEB', 'BL', '$DATE', '$DATE', '$MONTANTARR', '$NBOCCUPANT', '$TARIF');";
     $res = mysqli_query($con, $req);
     return $res;
 }

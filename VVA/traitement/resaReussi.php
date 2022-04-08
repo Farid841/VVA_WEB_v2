@@ -7,7 +7,8 @@ require_once('../includes/fonctions.php');
 CreateSemaine();
 
 if (isset($_POST['Valider'])) {
-  if (Reserver($_POST['noheb'], $_POST['date'], $_POST['nombrePersonne'], $_POST['account'])) {
+
+  if (Reserver($_POST['noheb'], $_POST['date'], $_POST['nombrePersonne'], $_POST['prix'])) {
     echo "Reservation reussi";
   } else {
     echo "Reservation echoué";
