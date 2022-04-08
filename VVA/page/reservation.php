@@ -4,7 +4,7 @@ require_once('../includes/session.php');
 require_once('../includes/fonctions.php');
 require_once('..//includes/header.php');
 
-if ((isset($_Get['annumation']) && $_Get['annumation'] == 1)) {
+if ((isset($_GET['annulation']) && $_GET['annulation'] == 1)) {
     echo "<script>alert('L'annulation été pris en compte')</script>";
 } else {
     echo "<script>alert('Probléme lors de l'annulation veillez reessayze plus tard')</script>";
@@ -17,7 +17,7 @@ if ((isset($_Get['annumation']) && $_Get['annumation'] == 1)) {
 </strong>
 
 <?php
-$res = GetLesHebergement();
+$res = GetReservations();
 
 //date de départ : DATEDEBSEM
 // $dateDepart = SavoirReservation($NOHEB, $row['DATEDEBSEM']);
@@ -71,53 +71,56 @@ $res = GetLesHebergement();
                 <h5 align='center' style='color:white'>Annulation</h5>
             </th>
         </tr>
-
+        </br>
 
         <?php
+        if ($res != null) {
+            while ($ligne = mysqli_fetch_array($res)) {
+                echo "<tr>";
+                echo "<td>";
+                echo $ligne['NORESA'];
+                echo "</td>";
 
-        while ($ligne = mysqli_fetch_array($res)) {
-            echo "<tr>";
-            echo "<td>";
-            echo $ligne['NORESA'];
-            echo "</td>";
+                echo "<td>";
+                echo $ligne['NOHEB'];
+                echo "</td>";
 
-            echo "<td>";
-            echo $ligne['NOHEB'];
-            echo "</td>";
+                echo "<td>";
+                echo $ligne['USER'];
+                echo "</td>";
 
-            echo "<td>";
-            echo $ligne['USER'];
-            echo "</td>";
+                echo "<td>";
+                echo $ligne['DATEDEBSEM'];
+                echo "</td>";
 
-            echo "<td>";
-            echo $ligne['DATEDEBSEM'];
-            echo "</td>";
+                echo "<td>";
+                echo $ligne['MONTANTARRHES'];
+                echo "</td>";
 
-            echo "<td>";
-            echo $ligne['MONTANTARRHES'];
-            echo "</td>";
+                echo "<td>";
+                echo $ligne['NBOCCUPANT'];
+                echo "</td>";
 
-            echo "<td>";
-            echo $ligne['NBOCCUPANT'];
-            echo "</td>";
+                echo "<td>";
+                echo $ligne['TARIFSEMRESA'];
+                echo "</td>";
 
-            echo "<td>";
-            echo $ligne['TARIFSEMRESA'];
-            echo "</td>";
+                echo "<td>";
+                echo $ligne['CODEETATRESA'];
+                echo "</td>";
 
-            echo "<td>";
-            echo $ligne['CODEETATRESA'];
-            echo "</td>";
+                echo '<td><a href="reservationModifier.php?NORESA=' . $ligne['NORESA'] . '">';
+                if ($ligne['CODEETATRESA'] != 'N')
+                    echo "<input type='submit' name='Modifier' value='Modifier' class='btn btn-warning'>";
+                echo "</a></td>";
 
-            echo '<td><a href="reservationModifier.php?NORESA=' . $ligne['NORESA'] . '">';
-            if ($ligne['CODEETATRESA'] != 'N')
-                echo "<input type='submit' name='Modifier' value='Modifier' class='btn btn-warning'>";
-            echo "</a></td>";
-
-            echo '<td><a href="trt_annuler_resa.php?NORESA=' . $ligne['NORESA'] . '">';
-            if ($ligne['CODEETATRESA'] != 'N')
-                echo "<input type='submit' name='Suprimer' value='Annuler' class='btn btn-danger'>";
-            echo "</a></td>";
+                echo '<td><a href="trt_annuler_resa.php?NORESA=' . $ligne['NORESA'] . '">';
+                if ($ligne['CODEETATRESA'] != 'N')
+                    echo "<input type='submit' name='Suprimer' value='Annuler' class='btn btn-danger'>";
+                echo "</a></td>";
+            }
+        } else {
+            echo "NO DATA";
         }
         ?>
     </table>

@@ -5,7 +5,10 @@ require_once('../includes/fonctions.php');
 require_once("../includes/header.php");
 
 if ((isset($_GET['ajout']) == 1)) {
-	echo "<script>alert('Votre ajout a été pris en compte')</script>";
+	echo "<script>alert('L'hebergement a été pris ajouté')</script>";
+}
+if ((isset($_GET['delete']) == 1)) {
+	echo "<script>alert('L' hebergement a été supprimé')</script>";
 }
 
 ?>
@@ -25,6 +28,7 @@ if ((isset($_GET['ajout']) == 1)) {
 
 <?php
 // APPEL DE LA RECHERCHE
+$action = "ges_consulter.php";
 include("../includes/recherche_heb.php");
 
 
@@ -80,48 +84,50 @@ include("../includes/recherche_heb.php");
 				$res = RechercheHebByRecherche($_POST);
 				if ($res) {
 
+
 					while ($hebergement = mysqli_fetch_array($res)) {
+						var_dump($hebergement);
 						echo "<tr>";
 						echo "<td style='width:200px;'>";
-						echo "<img style='width:100%;'src=image/" . $hebergements['PHOTOHEB'] . ">";
+						echo "<img style='width:100%;'src=image/" . $hebergement['PHOTOHEB'] . ">";
 						echo "</td>";
 
 						echo "<td>";
-						echo $hebergements['NOMHEB'];
+						echo $hebergement['NOMHEB'];
 						echo "</td>";
 
 						echo "<td>";
-						echo $hebergements['CODETYPEHEB'];
+						echo $hebergement['CODETYPEHEB'];
 						echo "</td>";
 
 						echo "<td>";
-						echo $hebergements['TARIFSEMHEB'];
+						echo $hebergement['TARIFSEMHEB'];
 						echo "</td>";
 
 						echo "<td>";
-						echo $hebergements['NBPLACEHEB'];
+						echo $hebergement['NBPLACEHEB'];
 						echo "</td>";
 
 						echo "<td>";
-						echo $hebergements['SURFACEHEB'];
+						echo $hebergement['SURFACEHEB'];
 						echo "</td>";
 
 						echo "<td>";
-						echo $hebergements['DESCRIHEB'];
+						echo $hebergement['DESCRIHEB'];
 						echo "</td>";
 						echo "<td>";
-						echo $hebergements['ORIENTATIONHEB'];
+						echo $hebergement['ORIENTATIONHEB'];
 						echo "</td>";
 
-						echo '<td><a href="hebergementModifier.php?noheb=' . $hebergements['NOHEB'] . '">';
+						echo '<td><a href="hebergementModifier.php?noheb=' . $hebergement['NOHEB'] . '">';
 						echo "<input type='submit' name='Modifier' value='Modifier' class='btn btn-warning'>";
 						echo "</a></td>";
 
-						echo '<td><a href="trt_supprimer.php?noheb=' . $hebergements['NOHEB'] . '">';
+						echo '<td><a href="../traitement/trt_supprimer.php?noheb=' . $hebergement['NOHEB'] . '">';
 						echo "<input type='submit' name='Suprimer' value='Supprimer' class='btn btn-danger'>";
 						echo "</td>";
 
-						echo '<td><a href="hebergement.php?noheb=' . $hebergements['NOHEB'] . '">';
+						echo '<td><a href="hebergement.php?noheb=' . $hebergement['NOHEB'] . '">';
 						echo "<input type='submit' name='Voir hebergement' value='Voir hebergement' class='btn btn-danger'> </a>";
 						echo "</td>";
 					}
@@ -131,50 +137,50 @@ include("../includes/recherche_heb.php");
 				$getHebs = GetLesHebergement();
 				if ($getHebs) {
 
-					while ($hebergements = mysqli_fetch_array($getHebs, MYSQLI_ASSOC)) {
+					while ($hebergement = mysqli_fetch_array($getHebs, MYSQLI_ASSOC)) {
 
 						//var_dump($value);
 						echo "<tr>";
 						echo "<td style='width:200px;'>";
-						echo "<img style='width:100%;'src=image/" . $hebergements['PHOTOHEB'] . ">";
+						echo "<img style='width:100%;'src=image/" . $hebergement['PHOTOHEB'] . ">";
 						echo "</td>";
 
 						echo "<td>";
-						echo $hebergements['NOMHEB'];
+						echo $hebergement['NOMHEB'];
 						echo "</td>";
 
 						echo "<td>";
-						echo $hebergements['CODETYPEHEB'];
+						echo $hebergement['CODETYPEHEB'];
 						echo "</td>";
 
 						echo "<td>";
-						echo $hebergements['TARIFSEMHEB'];
+						echo $hebergement['TARIFSEMHEB'];
 						echo "</td>";
 
 						echo "<td>";
-						echo $hebergements['NBPLACEHEB'];
+						echo $hebergement['NBPLACEHEB'];
 						echo "</td>";
 
 						echo "<td>";
-						echo $hebergements['SURFACEHEB'];
+						echo $hebergement['SURFACEHEB'];
 						echo "</td>";
 
 						echo "<td>";
-						echo $hebergements['DESCRIHEB'];
+						echo $hebergement['DESCRIHEB'];
 						echo "</td>";
 						echo "<td>";
-						echo $hebergements['ORIENTATIONHEB'];
+						echo $hebergement['ORIENTATIONHEB'];
 						echo "</td>";
 
-						echo '<td><a href="hebergementModifier.php?noheb=' . $hebergements['NOHEB'] . '">';
+						echo '<td><a href="hebergementModifier.php?noheb=' . $hebergement['NOHEB'] . '">';
 						echo "<input type='submit' name='Modifier' value='Modifier' class='btn btn-warning'>";
 						echo "</a></td>";
 
-						echo '<td><a href="trt_supprimer.php?noheb=' . $hebergements['NOHEB'] . '">';
+						echo '<td><a href="../traitement/trt_supprimer.php?noheb=' . $hebergement['NOHEB'] . '">';
 						echo "<input type='submit' name='Suprimer' value='Supprimer' class='btn btn-danger'>";
 						echo "</td>";
 
-						echo '<td><a href="hebergement.php?noheb=' . $hebergements['NOHEB'] . '">';
+						echo '<td><a href="hebergement.php?noheb=' . $hebergement['NOHEB'] . '">';
 						echo "<input type='submit' name='Voir hebergement' value='Voir hebergement' class='btn btn-primary'> </a>";
 						echo "</td>";
 					}

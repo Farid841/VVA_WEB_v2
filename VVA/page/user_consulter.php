@@ -20,6 +20,7 @@ require_once("../includes/header.php");
 
 <?php
 // APPEL DE LA RECHERCHE
+$action = "user_consulter.php";
 include("../includes/recherche_heb.php");
 
 

@@ -2,13 +2,10 @@
   <div class="card h-100">
     <div class="card-body bg-light">
 
-      <form action="consulter.php" method="post">
+      <form method="POST">
         <?php
-        $requete = "SELECT MAX(ANNEEHEB), MIN(ANNEEHEB),
-          MAX(NBPLACEHEB), MIN(NBPLACEHEB),
-          MAX(TARIFSEMHEB), MIN(TARIFSEMHEB),
-          MAX(SURFACEHEB), MIN(SURFACEHEB)
-          FROM hebergement";
+        $hebergementMN = rechechemn();
+
         ?>
 
         <div class="form-row">
@@ -17,7 +14,7 @@
             <label>
               <font class='hebCSS'> Nombre de places : </font>
             </label>
-            <input type="number" name="NBPLACEHEB" min="<?php echo $hebergement['MIN(NBPLACEHEB)']; ?>" max="<?php echo $hebergement['MAX(NBPLACEHEB)']; ?>" class="form-control" placeholder="Entrer le minimum">
+            <input type="number" name="NBPLACEHEB" min="<?php echo $hebergementMN['MIN(NBPLACEHEB)']; ?>" max="<?php echo $hebergementMN['MAX(NBPLACEHEB)']; ?>" class="form-control" placeholder="Entrer le minimum">
           </div>
 
           <div class="form-group col-md-3">
@@ -25,7 +22,7 @@
               <font class='hebCSS'> Surface : </font>
             </label>
             <div class="input-group mb-2">
-              <input type="number" name="SURFACEHEB" min="<?php echo $hebergement['MIN(SURFACEHEB)']; ?>" max="<?php echo $hebergement['MAX(SURFACEHEB)']; ?>" class="form-control" placeholder="Entrer le minimum">
+              <input type="number" name="SURFACEHEB" min="<?php echo $hebergementMN['MIN(SURFACEHEB)']; ?>" max="<?php echo $hebergement['MAX(SURFACEHEB)']; ?>" class="form-control" placeholder="Entrer le minimum">
               <div class="input-group-prepend">
                 <div class="input-group-text">m²</div>
               </div>
@@ -37,7 +34,7 @@
               <font class='hebCSS'> Tarif (hebdomadaire): </font>
             </label>
             <div class="input-group mb-2">
-              <input type="number" name="TARIFSEMHEB" min="<?php echo $hebergement['MIN(TARIFSEMHEB)']; ?>" max="<?php echo $hebergement['MAX(TARIFSEMHEB)']; ?>" class="form-control" placeholder="Entrer le maximum">
+              <input type="number" name="TARIFSEMHEB" min="<?php echo $hebergementMN['MIN(TARIFSEMHEB)']; ?>" max="<?php echo $hebergementMN['MAX(TARIFSEMHEB)']; ?>" class="form-control" placeholder="Entrer le maximum">
               <div class="input-group-prepend">
                 <div class="input-group-text">€</div>
               </div>

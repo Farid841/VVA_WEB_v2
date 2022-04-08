@@ -1,7 +1,9 @@
 <?php
 $title = "Modifier hebergement";
-require_once('includes/header.php');
-require_once('fonctions.php');
+require_once('../includes/session.php');
+require_once('../includes/fonctions.php');
+require_once('..//includes/header.php');
+
 if (isset($_GET)) {
   $res = GetHebergementNoheb($_GET['noheb']);
   $count = mysqli_num_rows($res);
@@ -10,7 +12,7 @@ if (isset($_GET)) {
   } else if ($count == 1) {
     $row = mysqli_fetch_array($res);
     if (isset($_GET["enregistrement"]) && $_GET["enregistrement"] == "ok") {
-      echo "changements effectué"; //A FAIRE
+      echo "<script>alert('Votre modification a été pris en compte')</script>";
     }
   }
 }
@@ -26,7 +28,7 @@ if (isset($_GET)) {
     <p align="center" style="color: #40A497" ;><strong>Formulaire de modification</strong></p>
   </font>
 
-  <form class="forme" method="Post" action="trt_modifier.php">
+  <form class="forme" method="Post" action="../traitement/trt_modifier.php">
     <!-- NOHEB : <input type="int" name="NOHEB"><br>
 <br> -->
     <input type="hidden" name="NOHEB" value="<?php echo $_GET['noheb']; ?>">
@@ -110,13 +112,13 @@ if (isset($_GET)) {
   </form>
 
   <?php
-  echo $req = " SELECT COUNT(NOHEB) as nombretotal FROM RESA WHERE NOHEB='" . $_GET['noheb'] . "' ";
+  /* echo $req = " SELECT COUNT(NOHEB) as nombretotal FROM RESA WHERE NOHEB='" . $_GET['noheb'] . "' ";
   $res = mysqli_query($con, $req);
   $row = mysqli_fetch_assoc($res);
 
   echo " <p><strong>" . $row['nombretotal'] . "</strong></p>";
 
-  ?>
+  */ ?>
 
   <style>
     form.forme {
@@ -142,6 +144,6 @@ if (isset($_GET)) {
 </body>
 <br>
 <br>
-<?php include "IndicatinUtilisateur.php"; ?>
+<?php include "../includes/footer.php"; ?>
 
 </html>

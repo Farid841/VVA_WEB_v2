@@ -1,6 +1,6 @@
 <div class="d-flex flex-column">
     <div id="page-content">
-        Village Vacances des Alpes
+
 
         <div class="container text-center">
             <div class="row justify-content-center">
