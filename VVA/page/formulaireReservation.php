@@ -19,7 +19,7 @@ if (!$row)
 </font>
 
 
-<form class="formulaire" method="POST" action="../traitement/resaReussi.php">
+<form class="formulaire" method="POST" action="resaReussi.php">
 
   <!-- JE MET LE NUMERO D'HEBERGEMENT DANS LE FORMULAIRE -->
   <input type="hidden" name="noheb" value="<?php echo $noheb; ?>">

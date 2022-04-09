@@ -1,4 +1,11 @@
-<?php $title = "VVA - Espace administrateur" ?>
+<?php $title = "VVA - Espace administrateur";
+
+
+require_once('../includes/session.php');
+require_once('../includes/fonctions.php');
+require_once('../includes/header.php');
+
+?>
 
 
 
@@ -26,7 +33,7 @@
 
 <div class="row">
 
-    <?php foreach ($listAccounts as $account) : ?>
+    <?php$listAccounts=Ge foreach ($listAccounts as $account) : ?>
 
         <div class="col-sm-6">
             <div class="card">
@@ -58,7 +65,7 @@
                         <?php
                             break;
                         case 'Ges': ?>
-                            <p class="card-text">Nombre d'activités en charge : <?= ORMUtilisateur::getNbActivitesEnCharge(); ?></p>
+                            <p class="card-text">Nombre d'activités en charge : <? ?></p>
                     <?php
                             break;
                     }

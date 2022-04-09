@@ -16,8 +16,9 @@ if ($count == 0) {
 } else if ($count == 1) {
   $row = mysqli_fetch_array($res);
   if (isset($_GET["enregistrement"]) && $_GET["enregistrement"] == "ok") {
-    echo "changements De la reservation " . $_GET['noresa'] . " a été effectué"; //A FAIRE
+    echo "changements de la reservation " . $_GET['noresa'] . " a été effectué"; //A FAIRE
   }
+  var_dump($row);
 ?>
 
   <font size="10pt">
@@ -34,37 +35,80 @@ if ($count == 0) {
 
     <label for="DATEDEBSEM">
       <span>DATEDEBSEM : &nbsp </span>
-      <input type='radio' name='date' value="<?php echo $row['DATEDEBSEM'] ?>" required>
     </label>
+    <table class="resa">
+      <tr class='tr-resa'>
+        <td class='td-resa'>
+          <? echo "<input type='radio' name='date' checked='yes' value='" . $row["DATEDEBSEM"] . "' required >" . $row["DATEDEBSEM"] . " CECI</input>"; ?>
 
-    <?php
-    $NOHEB = isset($_POST['NOHEB']) ? $_POST['NOHEB'] : '';
 
-    $SEMAINES = GETSEMAINE();
-    $i = 0;
-    while ($row = mysqli_fetch_array($SEMAINES)) {
-      if ($i % 5 == 0) {
-        if ($i > 0) {
-          echo "</tr>";
+        </td>
+      </tr>
+
+      <?php
+
+      /* $NOHEB = isset($_POST['NOHEB']) ? $_POST['NOHEB'] : '';
+
+      $semaine = GETSEMAINE();
+      $i = 0;
+
+      while ($lignesemaine = mysqli_fetch_array($semaine)) {
+        if ($i % 5 == 0) {
+          if ($i > 0) {
+            echo "</tr>";
+          }
+          echo "<tr class='tr-resa'>";
         }
-        echo "<tr class='tr'>";
-      }
-      echo "<td class='td'>";
-      $etatresa = SavoirReservation($NOHEB, $row['DATEDEBSEM']);
-      echo $row['DATEDEBSEM'];
-      if ($etatresa == 0) {
-        echo " LIBRE ";
-        echo "<input type='radio' name='date' value='" . $row['DATEDEBSEM'] . "' required ></input>";   //  A CONTUNIER
-      } else {
-        echo " NON LIBRE";
-      }
+        echo "<td class='td-resa'>";
+        $etatresa = SavoirReservation($NOHEB, $lignesemaine['DATEDEBSEM']);
+        echo $lignesemaine['DATEDEBSEM'];
+        if ($etatresa == 0) {
+          echo " LIBRE ";
+          echo "<input type='radio' name='date' value='" . $lignesemaine['DATEDEBSEM'] . "' required ></input>";   //  A CONTUNIER
+        } else {
+          echo " NON LIBRE";
+        }
 
-      echo "</td>";
-      $i++;
-      sleep(0.1);
-    }
+        echo "</td>";
+        $i++;
+        sleep(0.1);
+      }*/
 
-    ?>
+
+
+      ?>
+      </tr>
+    </table>
+
+    <table class="resa">
+      <?php
+      echo "<tr class='tr-resa'>";
+
+      $semaine = GETSEMAINE();
+      $i = 0;
+      while ($lignesemaine = mysqli_fetch_array($semaine)) {
+        if ($i % 5 == 0) {
+          if ($i > 0) {
+            echo "</tr>";
+          }
+          echo "<tr class='tr-resa'>";
+        }
+        echo "<td class='td-resa'>";
+        $savoirReservation = SavoirReservation($row['NOHEB'], $lignesemaine['DATEDEBSEM']);
+        //var_dump($savoirReservation);
+        echo $lignesemaine['DATEDEBSEM'];
+        if ($savoirReservation == 0) {
+          echo " LIBRE ";
+          echo "<input type='radio' name='date' value='" . $lignesemaine['DATEDEBSEM'] . "' required ></input>";   //  A CONTUNIER
+        } else {
+          echo " NON LIBRE";
+        }
+        echo "</td>";
+        $i++;
+      }
+      ?>
+      </tr>
+    </table>
     <br>
 
 
@@ -74,10 +118,10 @@ if ($count == 0) {
       <span>ETATRESA : &nbsp </span>
     </label>
     <select type="text" name="CODEETATRESA">
-      <option value="V" <?php if ($row['CODEETATRESA'] == "V") echo "selected";
-                        ?>>INDISPONIBLE</option>
-      <option value="N" <?php if ($row['ETATHEB'] == "N") echo "selected";
-                        ?>>DISPONIBLE</option>
+      <option value="BL" <?php if ($row['CODEETATRESA'] == "BL") echo "selected";
+                          ?>>INDISPONIBLE</option>
+      <option value="AN" <?php if ($row['CODEETATRESA'] == "AN") echo "selected";
+                          ?>>DISPONIBLE</option>
     </select><br>
     <br>
 

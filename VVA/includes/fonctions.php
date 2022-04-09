@@ -146,14 +146,27 @@ function GETSEMAINE()
 function Reserver($NOHEB, $DATEDEBSEM, $NBOCCUPANT, $TARIF)
 {
     $con = Connect();
-    mysqli_set_charset($con, "utf8");
-    $USER = $_SESSION['login'];
-    $DATE = date('Y-m-d');
-    $MONTANTARR =  $TARIF * 0.2;    //Montant verser en avance
-    $req = "INSERT INTO `resa` (`NORESA`, `USER`, `DATEDEBSEM`, `NOHEB`, `CODEETATRESA`, `DATERESA`, `DATEARRHES`, `MONTANTARRHES`, `NBOCCUPANT`, `TARIFSEMRESA`)
+    if (SavoirReservation($NOHEB, $DATEDEBSEM) == 0) {
+        $USER = $_SESSION['login'];
+        $DATE = date('Y-m-d');
+        $MONTANTARR =  $TARIF * 0.2;    //Montant verser en avance
+        $req = "INSERT INTO `resa` (`NORESA`, `USER`, `DATEDEBSEM`, `NOHEB`, `CODEETATRESA`, `DATERESA`, `DATEARRHES`, `MONTANTARRHES`, `NBOCCUPANT`, `TARIFSEMRESA`)
      VALUES (NULL, '$USER', '$DATEDEBSEM', '$NOHEB', 'BL', '$DATE', '$DATE', '$MONTANTARR', '$NBOCCUPANT', '$TARIF');";
-    $res = mysqli_query($con, $req);
-    return $res;
+        $res = mysqli_query($con, $req);
+        return $res;
+    } else {
+        return false;
+    }
+}
+
+function GetLastIdResa()
+{
+
+    $con = Connect();
+    mysqli_set_charset($con, "utf8");
+    $req = " SELECT LAST_INSERT_ID() FROM table ";
+    $resul = mysqli_query($con, $req);
+    return $resul;
 }
 
 //FONCTION QUI RECUPERE TOUS LES HEBERGEMENTS
