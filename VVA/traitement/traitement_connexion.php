@@ -30,7 +30,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 			}
 			mysqli_free_result($res); // libération de la mémoire des resultats
 		} else {
-			header("location:connexion.php?erreur=1");
+			header("location:../page/connexion.php?erreur=1");
 		}
 		mysqli_close($bdd); // fermeture de la connexion
 	} else {

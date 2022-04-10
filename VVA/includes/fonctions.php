@@ -164,7 +164,7 @@ function GetLastIdResa()
 
     $con = Connect();
     mysqli_set_charset($con, "utf8");
-    $req = " SELECT LAST_INSERT_ID() FROM table ";
+    $req = "SELECT NORESA FROM resa ORDER BY NORESA DESC LIMIT 1 ";
     $resul = mysqli_query($con, $req);
     return $resul;
 }
@@ -186,11 +186,11 @@ function GetReservations()
     return $res;
 }
 
-function modifierResa($resa)
+function modifierResa($resa, $date, $etatresa, $nboccupant)
 {
     $con = Connect();
     if (isset($resa)) {
-        $req = "UPDATE resa SET CODEETATRESA = 'N' 	WHERE NORESA=" . $resa . "";
+        $req = "UPDATE resa SET CODEETATRESA = '$etatresa', DATEDEBSEM ='$date', NBOCCUPANT='$nboccupant' WHERE NORESA=' $resa' ";
         if (mysqli_query($con, $req))
             return true;
     } else {
@@ -260,4 +260,12 @@ function SetResrvation()
         return true;
     else
         return false;
+}
+
+function GetComptes()
+{
+    $con = Connect();
+    $req = "SELECT * FROM compte";
+    $res = mysqli_query($con, $req);
+    return $res;
 }

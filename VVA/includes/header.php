@@ -46,19 +46,29 @@
 
                 <li class="nav-item active">
                     <?php
-                    if (isset($_SESSION['type_compte']) && ($_SESSION['type_compte'] == 'Adm' || $_SESSION['type_compte'] == 'Ges')) {
+                    if (isset($_SESSION['type_compte']) && ($_SESSION['type_compte'] == 'Ges')) {
                         echo "<a class='nav-link' href='ges_consulter.php'> Consulter </a>";
                     } else {
 
-                        echo "<a class='nav-link' href='user_consulter.php'> Consulter </a>";
+                        echo "<a class='nav-link' href='user_consulter.php'> Consulter  </a>";
                     }
                     ?>
 
                 </li>
                 <li class="nav-item active">
                     <?php
-                    if (isset($_SESSION['type_compte']) && ($_SESSION['type_compte'] == 'Adm' || $_SESSION['type_compte'] == 'Ges')) {
-                        echo "<a href='reservation.php' class='nav-link'>Réservation</a>";
+                    if (isset($_SESSION['type_compte']) && ($_SESSION['type_compte'] == 'Ges')) {
+                        echo "<a href='../page/reservation.php' class='nav-link'>Les Réservation</a>";
+                    }
+                    ?>
+                    <?php
+                    if (isset($_SESSION['type_compte']) && ($_SESSION['type_compte'] == 'Vac')) {
+                        echo "<a href='../page/mes_reservation.php' class='nav-link'>Mes Réservation</a>";
+                    }
+                    ?>
+                    <?php
+                    if (isset($_SESSION['type_compte']) && ($_SESSION['type_compte'] == 'Adm')) {
+                        echo "<a href='../page/pageadmin.php' class='nav-link'>Utilisateurs & MDPs</a>";
                     }
                     ?>
                 </li>

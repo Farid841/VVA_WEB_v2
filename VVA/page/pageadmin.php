@@ -4,6 +4,7 @@
 require_once('../includes/session.php');
 require_once('../includes/fonctions.php');
 require_once('../includes/header.php');
+require_once('../includes/verif_adm.php');
 
 ?>
 
@@ -33,44 +34,24 @@ require_once('../includes/header.php');
 
 <div class="row">
 
-    <?php$listAccounts=Ge foreach ($listAccounts as $account) : ?>
+    <?php $listAccounts = GetComptes();
+    foreach ($listAccounts as $account) : ?>
 
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <?= $account->getPrenomcompte() . " " . $account->getNomcompte() . " (" . $account->getTypeprofil() . ")" ?>
+                        <?= $account['PRENOMCPTE'] . " " . $account['NOMCPTE'] . " (" . $account['TYPECOMPTE'] . ")" ?>
                     </h5>
 
-                    <p class="card-text">Inscrit depuis le <?= $account->getDateinscrip(); ?></p>
+                    <p class="card-text">Inscrit depuis le <?= $account['DATEINSCRIP']; ?></p>
                     <p class"card-text>
                         Statut du compte :
-                        <?php echo $account->getDateferme() != "null" ? "Actif" : "Fermé";  ?>
+                        <?php echo $account['DATEFERME'] != "null" ? "Actif" : "Fermé";  ?>
                     </p>
 
-                    <?php switch ($account->getTypeprofil()) {
-                        case 'Vac': ?>
-                            <p class="card-text">Séjour du <?= $account->getDatedebsejour() . " au " . $account->getDatefinsejour() ?></p>
-                            <p class="card-text">
-                                <?php
-                                $now = date('d/m/Y');
-                                if ($account->getDatefinsejour() < $now)
-                                    echo "Séjour terminé";
-                                else if ($account->getDatedebsejour() < $now)
-                                    echo "Séjour à venir";
-                                else
-                                    echo "Séjour en cours";
-                                ?>
-                            </p>
-                        <?php
-                            break;
-                        case 'Ges': ?>
-                            <p class="card-text">Nombre d'activités en charge : <? ?></p>
-                    <?php
-                            break;
-                    }
-                    ?>
-                    <input type="password" disabled="disabled" value="<?= $account->getMdp() ?>" />
+
+                    <input type="password" disabled="disabled" value="<?= $account['MDP'] ?>" />
                 </div>
             </div>
         </div>
