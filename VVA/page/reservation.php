@@ -19,20 +19,6 @@ if ((isset($_GET['annulation']) && $_GET['annulation'] == 1)) {
 <?php
 $res = GetReservations();
 
-//date de départ : DATEDEBSEM
-// $dateDepart = SavoirReservation($NOHEB, $row['DATEDEBSEM']);
-// $duree = 1;
-// $dateDepartTimestamp = strtotime($dateDepart);
-// $dateFin  = date('DATEDEBSEM', strtotime('+'.$duree.' week', $dateDepartTimestamp ));
-// echo "date depart $dateDepart ";
-// echo "duree $duree ";
-// echo "date depart Timestamp $dateDepartTimestamp ";
-// echo "date de fin $dateFin"
-
-// $date = date($_POST['DATEDEBSEM']);//  ici ta date
-// $date = strtotime(date($date['DATEDEBSEM'], strtotime($date)) . " +7 days");
-// echo "la date est la $date";       // ajouter 1 semaine
-
 
 ?>
 

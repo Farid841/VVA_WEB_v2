@@ -17,7 +17,7 @@ require_once('../includes/verif_adm.php');
 </div>
 
 
-<button class="btn btn-primary" onclick="seePasswords()">Voir les mots de passes</button>
+<button class="btn btn-primary" onclick="seePasswords()">Voir les mots de passes et les identifiant de connexion</button>
 <script>
     var mdpFields = document.getElementsByTagName("input");
 
@@ -52,6 +52,7 @@ require_once('../includes/verif_adm.php');
 
 
                     <input type="password" disabled="disabled" value="<?= $account['MDP'] ?>" />
+                    <input type="password" disabled="disabled" value="<?= $account['USER'] ?>" />
                 </div>
             </div>
         </div>

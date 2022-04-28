@@ -3,7 +3,7 @@ $title = "reservation reussite";
 
 require_once('../includes/session.php');
 require_once('../includes/fonctions.php');
-require_once('..//includes/header.php');
+require_once('../includes/header.php');
 
 //Reserver 
 CreateSemaine();

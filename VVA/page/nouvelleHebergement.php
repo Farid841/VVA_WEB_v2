@@ -34,11 +34,11 @@ if ((isset($_GET['ajout']) && ($_GET['ajout'] != 0))) {
     </select><br> &nbsp &nbsp &nbsp
     <br>
 
-    NOMHEB : <input type="text" name="NOMHEB"><br>
+    NOMHEB : <input type="text" name="NOMHEB" required><br>
     <br>
-    NBPLACEHEB : <input type="int" name="NBPLACEHEB"><br>
+    NBPLACEHEB : <input type="int" name="NBPLACEHEB" required><br>
     <br>
-    SURFACEHEB : <input type="int" name="SURFACEHEB"><br>
+    SURFACEHEB : <input type="int" name="SURFACEHEB" required><br>
     <br>
 
     <label for="INTERNET">
@@ -50,7 +50,7 @@ if ((isset($_GET['ajout']) && ($_GET['ajout'] != 0))) {
     </select><br>
     <br>
 
-    ANNEEHEB : <input type="int" name="ANNEEHEB"><br>
+    ANNEEHEB : <input type="int" name="ANNEEHEB" required><br>
     <br>
 
     <label for="SECTEURHEB">
@@ -88,7 +88,7 @@ if ((isset($_GET['ajout']) && ($_GET['ajout'] != 0))) {
     <br>
     PHOTOHEB : <input type="text" name="PHOTOHEB"><br>
     <br>
-    TARIFSEMHEB : <input type="int" name="TARIFSEMHEB"><br>
+    TARIFSEMHEB : <input type="int" name="TARIFSEMHEB" required><br>
     <br>
     <center>
       <input type="submit" class="btn-primary" value="Valider">
