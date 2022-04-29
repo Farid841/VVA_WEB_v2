@@ -101,7 +101,7 @@ $res = GetReservations();
                 echo "</a></td>";
 
                 echo '<td><a href="trt_annuler_resa.php?NORESA=' . $ligne['NORESA'] . '">';
-                if ($ligne['CODEETATRESA'] != 'N')
+                if ($ligne['CODEETATRESA'] != 'AN')
                     echo "<input type='submit' name='Suprimer' value='Annuler' class='btn btn-danger'>";
                 echo "</a></td>";
             }

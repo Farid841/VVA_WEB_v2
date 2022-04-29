@@ -10,9 +10,9 @@ CreateSemaine();
 if (isset($_POST['Valider'])) {
 
   if (Reserver($_POST['noheb'], $_POST['date'], $_POST['nombrePersonne'], $_POST['prix'])) {
-    $idresa = (string) GetLastIdResa();
+    $idresa = (int) GetLastIdResa();
     $subTitle = "Reservation reussite";
-    $description = "L'identifiant de votre reservation est" . $idresa . " Nous vous informons de la fin de la transaction";
+    $description = "L'identifiant de votre reservation est " . $idresa . " Nous vous informons de la fin de la transaction";
     include "../includes/message_template.php";
   } else {
     echo "Reservation echoué";

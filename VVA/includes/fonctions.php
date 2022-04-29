@@ -130,6 +130,32 @@ function SavoirReservation($NOHEB, $DATE)
     return $count;
 }
 
+function annulerResa($no)
+{
+    $con = Connect();
+    mysqli_set_charset($con, "utf8");
+
+    $req2 = "UPDATE resa SET CODEETATRESA = 'AN' where noresa= $no  ";
+
+    $res2 = mysqli_query($con, $req2);
+    if ($res2) {
+        return true;
+    } else
+        return false;
+}
+
+function GetNomByTypeResa($codeetatresa)
+{
+
+    $con = Connect();
+    mysqli_set_charset($con, "utf8");
+
+    $req = "SELECT * FROM `etat_resa` WHERE `CODEETATRESA`= '$codeetatresa'";
+    $resul = mysqli_query($con, $req);
+    $resul = mysqli_fetch_array($resul, MYSQLI_ASSOC);
+    return $resul;
+}
+
 //FONCTION QUI VA RECUPERER LES SEMAINE CHOISI
 
 function GETSEMAINE()
@@ -178,12 +204,22 @@ function GetLesHebergement()
     return $res;
 }
 
+
 function GetReservations()
 {
     $con = Connect();
     $req = "SELECT * FROM resa";
     $res = mysqli_query($con, $req);
     return $res;
+}
+
+function GetresevationByUser($user)
+{
+    $con = Connect();
+    mysqli_set_charset($con, "utf8");
+    $req = "SELECT * FROM `resa` WHERE `USER`= '$user' AND `CODEETATRESA` != 'AN' ";
+    $resul = mysqli_query($con, $req);
+    return $resul;
 }
 
 function modifierResa($resa, $date, $etatresa, $nboccupant)

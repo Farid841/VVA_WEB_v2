@@ -1,4 +1,4 @@
 <?php
-if (isset($_SESSION['type_compte'])) {
+if (empty($_SESSION['type_compte'])) {
     header("Location: ../page/connexion.php");
 }

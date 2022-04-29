@@ -60,3 +60,5 @@ require_once('../includes/verif_adm.php');
     <?php endforeach ?>
 
 </div>
+
+<?php include "../includes/footer.php"; ?>
