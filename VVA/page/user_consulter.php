@@ -62,48 +62,47 @@ include("../includes/recherche_heb.php");
         </tr>
         <?php
         if (isset($_POST['Recherche'])) {
+
             $res = RechercheHebByRecherche($_POST);
             if ($res) {
 
+
                 while ($hebergement = mysqli_fetch_array($res)) {
-                    foreach ($hebergement as $hebergement => $value) {
-                        echo "<tr>";
-                        echo "<td style='width:200px;'>";
-                        echo "<img style='width:100%;'src=image/" . $hebergement['PHOTOHEB'] . ">";
-                        echo "</td>";
+                    echo "<tr>";
+                    echo "<td style='width:200px;'>";
+                    echo "<img style='width:100%;'src=image/" . $hebergement['PHOTOHEB'] . ">";
+                    echo "</td>";
 
-                        echo "<td>";
-                        echo $hebergement['NOMHEB'];
-                        echo "</td>";
+                    echo "<td>";
+                    echo $hebergement['NOMHEB'];
+                    echo "</td>";
 
-                        echo "<td>";
-                        echo $hebergement['CODETYPEHEB'];
-                        echo "</td>";
+                    echo "<td>";
+                    echo $hebergement['CODETYPEHEB'];
+                    echo "</td>";
 
-                        echo "<td>";
-                        echo $hebergement['TARIFSEMHEB'];
-                        echo "</td>";
+                    echo "<td>";
+                    echo $hebergement['TARIFSEMHEB'];
+                    echo "</td>";
 
-                        echo "<td>";
-                        echo $hebergement['NBPLACEHEB'];
-                        echo "</td>";
+                    echo "<td>";
+                    echo $hebergement['NBPLACEHEB'];
+                    echo "</td>";
 
-                        echo "<td>";
-                        echo $hebergement['SURFACEHEB'];
-                        echo "</td>";
+                    echo "<td>";
+                    echo $hebergement['SURFACEHEB'];
+                    echo "</td>";
 
-                        echo "<td>";
-                        echo $hebergement['DESCRIHEB'];
-                        echo "</td>";
+                    echo "<td>";
+                    echo $hebergement['DESCRIHEB'];
+                    echo "</td>";
+                    echo "<td>";
+                    echo $hebergement['ORIENTATIONHEB'];
+                    echo "</td>";
 
-                        echo "<td>";
-                        echo $hebergement['ORIENTATIONHEB'];
-                        echo "</td>";
-
-                        echo '<td><a href="hebergement.php?noheb=' . $hebergement['NOHEB'] . '">';
-                        echo "<input type='submit' name='Voir' value='voir' class='btn btn-primary'> </a>";
-                        echo "</td>";
-                    }
+                    echo '<td><a href="hebergement.php?noheb=' . $hebergement['NOHEB'] . '">';
+                    echo "<input type='submit' name='Voir hebergement' value='Voir hebergement' class='btn btn-primary'> </a>";
+                    echo "</td>";
                 }
             } else
                 echo 'NO-DATA';
